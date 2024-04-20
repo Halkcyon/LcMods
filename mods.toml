@@ -1,0 +1,7 @@
+[mods]
+# needed to load mods
+BepInExPack = { url = 'https://thunderstore.io/c/lethal-company/p/BepInEx/BepInExPack/', version = '5.4.21' }
+# allows more than 4 players
+MoreCompany = { url = 'https://thunderstore.io/c/lethal-company/p/notnotnotswipez/MoreCompany/', version = '1.9.0' }
+# allows players to join between levels
+ShipLobby = { url = 'https://thunderstore.io/c/lethal-company/p/tinyhoot/ShipLobby/', version = '1.0.2' }

@@ -1,0 +1,18 @@
+[package]
+name = "LcMods"
+version = "1.0.0"
+edition = "2021"
+
+[profile.release]
+opt-level = "s"
+strip = "symbols"
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+
+[dependencies]
+zip = { version = "0.6", default-features = false, features = ["zstd"] }
+
+[build-dependencies]
+walkdir = "2.5"
+zip = { version = "0.6", default-features = false, features = ["zstd"] }
