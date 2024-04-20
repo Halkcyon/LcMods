@@ -15,17 +15,22 @@ fn main() {
     let file_opts = FileOptions::default()
         .compression_method(zip::CompressionMethod::Zstd)
         .compression_level(Some(22));
-    for entry in WalkDir::new("BepInExPack") {
+    for entry in WalkDir::new("BepInExPack").into_iter().skip(1) {
         let entry = entry.expect("unable to read file?");
+        let path = entry.path();
+        let name = path
+            .to_str()
+            .unwrap()
+            .strip_prefix("BepInExPack\\")
+            .unwrap();
+
         if entry.file_type().is_dir() {
-            zip.add_directory(entry.path().to_str().unwrap(), file_opts)
-                .unwrap();
+            zip.add_directory(name, file_opts).unwrap();
         } else {
-            zip.start_file(entry.path().to_str().unwrap(), file_opts)
-                .unwrap();
+            zip.start_file(name, file_opts).unwrap();
 
             let mut buf = Vec::new();
-            let mut current_file = BufReader::new(File::open(entry.path()).unwrap());
+            let mut current_file = BufReader::new(File::open(path).unwrap());
             io::copy(&mut current_file, &mut buf).unwrap();
 
             zip.write_all(&buf).unwrap();

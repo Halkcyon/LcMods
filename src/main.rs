@@ -16,19 +16,14 @@ fn main() {
 
     let lc_root = get_lethal_company_root(&steam_root);
     let Some(lc_root) = lc_root else {
-        exit("could not find `Lethal Company` path in the provided SteamLibrary", &mut stdin);
+        exit(
+            "could not find `Lethal Company` path in the provided SteamLibrary",
+            &mut stdin,
+        );
     };
 
     let crsr = io::Cursor::new(MODS_ZIP);
     let mut zip = ZipArchive::new(crsr).unwrap();
-
-    let mods_root = lc_root.join("BepInExPack");
-    if mods_root.exists() {
-        if let Err(err) = fs::remove_dir_all(&mods_root) {
-            exit(&format!("failed to remove existing mods: {err}"), &mut stdin);
-        }
-    }
-
     if let Err(err) = zip.extract(&lc_root) {
         exit(&format!("failed to extract mods: {err}"), &mut stdin);
     };
