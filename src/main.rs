@@ -1,9 +1,8 @@
-use std::fs;
 use std::io::{self, prelude::*, StdinLock, StdoutLock};
 use std::path::{Path, PathBuf};
 use zip::read::ZipArchive;
 
-const MODS_ZIP: &'static [u8] = include_bytes!("mods.zip");
+const MODS_ZIP: &[u8] = include_bytes!("mods.zip");
 
 fn main() {
     let mut stdout = stdout();
@@ -51,10 +50,10 @@ fn prompt_for_steam_library_root(
     stdin: &mut StdinLock,
 ) -> Option<PathBuf> {
     stdout
-        .write(b"Enter the path to your SteamLibrary where Lethal Company is installed\r\n")
+        .write_all(b"Enter the path to your SteamLibrary where Lethal Company is installed\r\n")
         .unwrap();
     stdout
-        .write(b"e.g., `C:\\Program Files (x86)\\Steam`, `G:\\SteamLibrary`\r\n")
+        .write_all(b"e.g., `C:\\Program Files (x86)\\Steam`, `G:\\SteamLibrary`\r\n")
         .unwrap();
     stdout.flush().unwrap();
 

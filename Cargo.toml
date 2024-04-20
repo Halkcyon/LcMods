@@ -1,7 +1,11 @@
 [package]
-name = "LcMods"
-version = "1.0.1"
+name = "lc_mods"
+version = "1.0.2"
 edition = "2021"
+
+[[bin]]
+name = "LcMods"
+path = "src/main.rs"
 
 [profile.release]
 opt-level = "s"

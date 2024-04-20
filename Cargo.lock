@@ -3,14 +3,6 @@
 version = 3
 
 [[package]]
-name = "LcMods"
-version = "1.0.1"
-dependencies = [
- "walkdir",
- "zip",
-]
-
-[[package]]
 name = "byteorder"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -54,6 +46,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "685a7d121ee3f65ae4fddd72b25a04bb36b6af81bc0828f7d5434c0fe60fa3a2"
 dependencies = [
  "libc",
+]
+
+[[package]]
+name = "lc_mods"
+version = "1.0.2"
+dependencies = [
+ "walkdir",
+ "zip",
 ]
 
 [[package]]
