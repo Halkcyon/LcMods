@@ -15,7 +15,19 @@ codegen-units = 1
 panic = "abort"
 
 [dependencies]
+anyhow = "1.0.86"
+bitvec = "1.0.1"
+crossterm = "0.27.0"
+ratatui = { version = "0.26.3", features = ["all-widgets"] }
+serde = { version = "1.0.203", features = ["derive"] }
+serde_json = "1.0.117"
 zip = { version = "0.6", default-features = false, features = ["zstd"] }
+
+[dependencies.windows]
+version = '0.57'
+features = [
+    'Win32_Storage_FileSystem',
+]
 
 [build-dependencies]
 walkdir = "2.5"
